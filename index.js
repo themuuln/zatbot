@@ -10,6 +10,10 @@ const webhook_verify_token = process.env.WEBHOOK_VERIFY_TOKEN;
 
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
+app.get('/test', (req, res) => {
+  res.send('Bot is running!');
+});
+
 app.get('/webhook', (req, res) => {
   if (req.query['hub.verify_token'] === webhook_verify_token) {
     res.send(req.query['hub.challenge']);
